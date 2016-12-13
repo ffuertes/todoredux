@@ -18,5 +18,5 @@ export default todos;
 
 export const getVisibleTodos = (state, filter) => {
   const ids = fromCreateList.getIds(state.listByFilter[filter]);
-  return ids.map( id => fromById.getTodo( state.byId[id] ));
+  return ids.map( id => fromById.getTodo( state.byId, id ));
 }

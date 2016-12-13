@@ -3,7 +3,7 @@ import { createStore, applyMiddleware } from 'redux';
 import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 
-import todoApp from './reducers/';
+import todos from './reducers/';
 
 
 
@@ -21,7 +21,7 @@ if (process.env.NODE_ENV !== 'production' ) {
 
 
 const store = createStore( 
-	todoApp,
+	todos,
 	applyMiddleware(...middlewares) 
 );
 
