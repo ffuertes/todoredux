@@ -3,7 +3,7 @@ import { createStore, applyMiddleware } from 'redux';
 import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 
-import todoApp from './reducers';
+import todoApp from './reducers/';
 
 
 

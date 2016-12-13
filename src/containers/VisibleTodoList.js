@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 import * as actions from '../store/actions';
-import { getVisibleTodos } from '../store/reducers';
+import { getVisibleTodos } from '../store/reducers/';
 import TodoList from '../components/TodoList';
 
 class VisibleTodoList extends Component {
@@ -29,6 +29,7 @@ class VisibleTodoList extends Component {
 
 const mapStateToProps = ( state, { params } ) => {
   const filter = params.filter || 'all';
+  
   return {
     todos: getVisibleTodos( state, filter ),
     filter,
