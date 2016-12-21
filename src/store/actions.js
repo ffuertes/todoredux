@@ -6,6 +6,7 @@ export const ADD_TODO = 'ADD_TODO'
 export const TOGGLE_TODO = 'TOGGLE_TODO'
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 import { v4 } from 'node-uuid';
+import { getIsFetching } from './reducers';
 
 import * as api from './fakeDatabase';
 
@@ -34,7 +35,12 @@ const receiveTodos = (filter, response) => ({
   response
 })
 
-export const fetchTodos = (filter) => (dispatch) => {
+export const fetchTodos = (filter) => (dispatch, getState) => {
+  if ( getIsFetching( getState(), filter) ) {
+    //This is a convention for empty async actions
+    return Promise.resolve();
+  }
+
   dispatch( requestTodos(filter) );
 
 	return api.fetchTodos(filter).then(response => {
