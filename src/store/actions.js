@@ -3,10 +3,6 @@
  */
 import { normalize } from 'normalizr';
 
-export const ADD_TODO = 'ADD_TODO'
-export const TOGGLE_TODO = 'TOGGLE_TODO'
-export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
-
 import { getIsFetching } from './reducers';
 import * as schema from './schema';
 import * as api from './fakeDatabase';
@@ -26,7 +22,8 @@ export const addTodo = (text) => (dispatch) =>
 export const toggleTodo = (id) => (dispatch) => 
     api.toggleTodo(id).then(response => {
       dispatch({
-        type: TOGGLE_TODO, id
+        type: 'TOGGLE_TODO_SUCCESS', 
+        response: normalize(response, schema.todo)
       })
     })  
 
